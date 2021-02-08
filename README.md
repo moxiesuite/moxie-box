@@ -1,15 +1,15 @@
-truffle-box
+moxie-box
 ===========
 
-Truffle Box management functionality.
+Moxie Box management functionality.
 
-Provides behavior for unboxing a new project from a predefined Truffle Box.
+Provides behavior for unboxing a new project from a predefined Moxie Box.
 
 
 Box Configuration
 -----------------
 
-Truffle Boxes are configured via an optional `truffle-box.json` file in the
+Moxie Boxes are configured via an optional `moxie-box.json` file in the
 box repo's root directory.
 
 This box configuration file specifies an object containing the following
@@ -19,7 +19,7 @@ properties:
 
   A list of relative paths to files that should be removed upon box unpack.
   Useful to remove box READMEs or other artifacts that pertain to box but not
-  the set-up Truffle project.
+  the set-up Moxie project.
 
   Example:
 
@@ -34,16 +34,16 @@ properties:
 
   An object mapping supported behaviors for project to invoked command strings.
 
-  `truffle unbox` prints commands to screen upon unboxing for documentation
+  `moxie unbox` prints commands to screen upon unboxing for documentation
   purposes.
 
   Example:
 
   ```json
   "commands": {
-    "compile": "truffle compile",
-    "migrate": "truffle migrate",
-    "test": "truffle test"
+    "compile": "moxie compile",
+    "migrate": "moxie migrate",
+    "test": "moxie test"
   }
   ```
 

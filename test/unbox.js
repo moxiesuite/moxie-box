@@ -4,10 +4,10 @@ var assert = require("assert");
 
 var Box = require("../");
 
-var TRUFFLE_BOX_DEFAULT = "git@github.com:trufflesuite/truffle-init-default.git";
+var MOXIE_BOX_DEFAULT = "git@github.com:moxiesuite/moxie-init-default.git";
 
 describe("Unbox", function() {
-  var destination = path.join(__dirname, ".truffle_test_tmp");
+  var destination = path.join(__dirname, ".moxie_test_tmp");
 
   before("mkdir", function(done) {
     fs.ensureDir(destination, done);
@@ -17,23 +17,23 @@ describe("Unbox", function() {
     fs.remove(destination, done);
   });
 
-  it("unboxes truffle box from github", function() {
+  it("unboxes moxie box from github", function() {
     this.timeout(5000);
 
-    return Box.unbox(TRUFFLE_BOX_DEFAULT, destination)
-      .then(function (truffleConfig) {
-        assert.ok(truffleConfig);
+    return Box.unbox(MOXIE_BOX_DEFAULT, destination)
+      .then(function (moxieConfig) {
+        assert.ok(moxieConfig);
 
         assert(
-          fs.existsSync(path.join(destination, "truffle.js")),
-          "Unboxed project should have truffle config."
+          fs.existsSync(path.join(destination, "moxie.js")),
+          "Unboxed project should have moxie config."
         );
       });
   });
 
-  it("ignores files listed in the truffle-init.json file, and removes the truffle-init.json file", function() {
+  it("ignores files listed in the moxie-init.json file, and removes the moxie-init.json file", function() {
     // Assert the file is not there first.
-    assert(fs.existsSync(path.join(destination, "truffle-init.json")) == false, "truffle-init.json shouldn't be available to the user!");
+    assert(fs.existsSync(path.join(destination, "moxie-init.json")) == false, "moxie-init.json shouldn't be available to the user!");
 
     // Now assert the README.md and the .gitignore file were removed.
     assert(fs.existsSync(path.join(destination, "README.md")) == false, "README.md didn't get removed!");
@@ -51,7 +51,7 @@ describe("Unbox", function() {
     fs.remove(contracts_directory, function(err) {
       if (err) return done(err);
 
-      Box.unbox(TRUFFLE_BOX_DEFAULT, destination)
+      Box.unbox(MOXIE_BOX_DEFAULT, destination)
         .then(function(boxConfig) {
           assert(
             fs.existsSync(contracts_directory) == false,

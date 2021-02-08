@@ -2,7 +2,7 @@ var utils = require("./lib/utils");
 var tmp = require("tmp");
 var path = require("path");
 
-var Config = require("truffle-config");
+var Config = require("moxie-config");
 
 var Box = {
   unbox: function(url, destination, options) {
@@ -39,9 +39,9 @@ var Box = {
         return callback(err);
       }
 
-      self.unbox("https://github.com/trufflesuite/truffle-init-" + name, dir)
+      self.unbox("https://github.com/moxiesuite/moxie-init-" + name, dir)
         .then(function() {
-          var config = Config.load(path.join(dir, "truffle.js"), {});
+          var config = Config.load(path.join(dir, "moxie.js"), {});
           callback(null, config);
         })
         .catch(callback);
